@@ -8,6 +8,9 @@ class Character:
         self._effect_time: int = 0
 
     def status(self):
+        return self._status
+
+    def status_check(self):
         if self._status is False:
             self._turns += 1
 
@@ -52,12 +55,12 @@ class Timeline:
 
         if self._front == 0:
             for character in self._timeline:
-                if character.status():
+                if character.status_check():
                     print_list.append(character.name)
         else:
             for part in [self._timeline[self._front:], self._timeline[:self._front]]:
                 for character in part:
-                    if character.status():
+                    if character.status_check():
                         print_list.append(character.name)
 
         print("--".join(print_list))
@@ -68,7 +71,7 @@ class Timeline:
         if self._front >= len(self._timeline):
             self._front -= len(self._timeline)
 
-        while self._timeline[self._front + 1]._status is False:
+        while self._timeline[self._front + 1].status() is False:
             self._front += 1
 
             if self._front >= len(self._timeline):
