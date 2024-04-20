@@ -2,7 +2,30 @@ class Character:
     def __init__(self, name, speed):
         self.name: str = name
         self.speed: float | int = speed
+        # active or not
         self._status: bool = True
+        self._turns: int = 0
+        self._effect_time: int = 0
+
+    def status(self):
+        if self._status is False:
+            self._turns += 1
+
+        if self._turns == self._effect_time:
+            self.activate()
+
+        return self._status
+
+    def activate(self):
+        self._status = True
+        self._turns = 0
+
+    def deactivate(self, effect_time: int):
+        self._status = False
+        self._effect_time = effect_time
+
+    def turns(self):
+        return self._turns
 
     def __lt__(self, other):
         return self.speed < other.speed
@@ -13,6 +36,13 @@ class Timeline:
         self._timeline: list[Character] = []
         self._front = 0
 
+    def list_characters(self):
+        temp = []
+        for index in range(len(self._timeline)):
+            temp.append(str(index) + "." + self._timeline[index].name)
+
+        print(" ".join(temp))
+
     def add(self, character: Character):
         self._timeline.append(character)
         self._timeline = mergesort_character_list(self._timeline)
@@ -22,13 +52,13 @@ class Timeline:
 
         if self._front == 0:
             for character in self._timeline:
-                print_list.append(character.name)
+                if character.status():
+                    print_list.append(character.name)
         else:
-            for character in self._timeline[self._front:]:
-                print_list.append(character.name)
-
-            for character in self._timeline[:self._front]:
-                print_list.append(character.name)
+            for part in [self._timeline[self._front:], self._timeline[:self._front]]:
+                for character in part:
+                    if character.status():
+                        print_list.append(character.name)
 
         print("--".join(print_list))
 
@@ -38,12 +68,14 @@ class Timeline:
         if self._front >= len(self._timeline):
             self._front -= len(self._timeline)
 
-    def remove(self):
-        temp = []
-        for index in range(len(self._timeline)):
-            temp.append(str(index) + "." + self._timeline[index].name)
+        while self._timeline[self._front + 1]._status is False:
+            self._front += 1
 
-        print(" ".join(temp))
+            if self._front >= len(self._timeline):
+                self._front -= len(self._timeline)
+
+    def remove(self):
+        self.list_characters()
 
         character: int = int(input("character number to be removed\n"))
 
@@ -51,6 +83,13 @@ class Timeline:
             self._front -= 1
 
         self._timeline.pop(character)
+
+    def stun(self):
+        self.list_characters()
+
+        character: int = int(input("character number to be removed\n"))
+
+        self._timeline[character].deactivate(int(input("stun for how many turns")))
 
 
 def mergesort_character_list(lst: list[Character]):
