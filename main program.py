@@ -12,16 +12,20 @@ def main():
 
         character_name: str = input("name of entity\n")
 
+    actions: str = "next, remove, stun" + "\n"
+
     while True:
         timeline.print()
 
-        action = input().lower()
+        action = input(actions).lower()
 
         while action != "next":
             if action == "remove":
                 timeline.remove()
+            elif action == "stun":
+                timeline.stun()
 
-            action = input().lower()
+            action = input(actions).lower()
 
         timeline.next_round()
 
