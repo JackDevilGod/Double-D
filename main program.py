@@ -1,18 +1,23 @@
 from classes import *
+import csv
 
 
 def main():
-    # TODO add function of saving player data to a separate file and read from it.
-
     timeline: Timeline = Timeline()
 
-    # fill the list
-    character_name: str = input("name of entity\n")
+    # fill the list with players
+    with open("player data.csv", "r") as player_data_file:
+        list_player_data = csv.reader(player_data_file)
+        for player_data in list_player_data:
+            timeline.add(Character(player_data[0], float(player_data[1])))
+
+    # fill the list with enemies
+    character_name: str = input("name of enemy\n")
 
     while character_name != "":
         timeline.add(Character(character_name, float(input("speed\n"))))
 
-        character_name: str = input("name of entity\n")
+        character_name: str = input("name of enemy\n")
 
     actions: str = "next, remove, stun" + "\n"
 

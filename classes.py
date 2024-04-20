@@ -1,5 +1,5 @@
 class Character:
-    def __init__(self, name, speed):
+    def __init__(self, name: str, speed: float | int):
         self.name: str = name
         self.speed: float | int = speed
         # active or not
@@ -63,19 +63,27 @@ class Timeline:
                     if character.status_check():
                         print_list.append(character.name)
 
-        print("--".join(print_list))
+        print(" -- ".join(print_list))
 
     def next_round(self):
         self._front += 1
+        next_index = self._front + 1
 
         if self._front >= len(self._timeline):
             self._front -= len(self._timeline)
+            next_index -= len(self._timeline)
+        elif next_index >= len(self._timeline):
+            next_index -= len(self._timeline)
 
-        while self._timeline[self._front + 1].status() is False:
+        while self._timeline[next_index].status() is False:
             self._front += 1
+            next_index += 1
 
             if self._front >= len(self._timeline):
                 self._front -= len(self._timeline)
+                next_index -= len(self._timeline)
+            elif next_index >= len(self._timeline):
+                next_index -= len(self._timeline)
 
     def remove(self):
         self.list_characters()
