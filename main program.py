@@ -2,6 +2,8 @@ from classes import *
 
 
 def main():
+    # TODO add function of saving player data to a separate file and read from it.
+
     timeline: Timeline = Timeline()
 
     # fill the list
