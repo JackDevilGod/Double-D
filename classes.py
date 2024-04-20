@@ -100,7 +100,12 @@ class Timeline:
 
         character: int = int(input("character number to be removed\n"))
 
-        self._timeline[character].deactivate(int(input("stun for how many turns")))
+        stun_duration = input("stun for how many turns")
+
+        while stun_duration.isnumeric() is False:
+            stun_duration = input("stun for how many turns")
+
+        self._timeline[character].deactivate(int(stun_duration))
 
 
 def mergesort_character_list(lst: list[Character]):
