@@ -1,5 +1,3 @@
-import os.path
-
 from classes import *
 import csv
 
