@@ -1,5 +1,3 @@
-import csv
-
 from battle_instance import *
 
 
