@@ -2,12 +2,13 @@ from classes import *
 import csv
 
 
-def main():
+def battle():
     timeline: Timeline = Timeline()
 
     # fill the list with players
-    with open("../player data.csv", "r") as player_data_file:
+    with open("player data.csv", "r") as player_data_file:
         list_player_data = csv.reader(player_data_file)
+
         for player_data in list_player_data:
             timeline.add(Character(player_data[0], float(player_data[1])))
 
@@ -19,7 +20,7 @@ def main():
 
         character_name: str = input("name of enemy\n")
 
-    actions: str = "next, remove, stun" + "\n"
+    actions: str = "next, remove, stun, exit" + "\n"
 
     while True:
         timeline.print()
@@ -27,15 +28,14 @@ def main():
         action = input(actions).lower()
 
         while action != "next":
-            if action == "remove":
-                timeline.remove()
-            elif action == "stun":
-                timeline.stun()
+            match action:
+                case "remove":
+                    timeline.remove()
+                case "stun":
+                    timeline.stun()
+                case "exit":
+                    return
 
             action = input(actions).lower()
 
         timeline.next_round()
-
-
-if __name__ == "__main__":
-    main()
