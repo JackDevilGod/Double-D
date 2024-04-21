@@ -16,6 +16,7 @@ def main():
                 case "battle":
                     battle()
                 case "add player":
+                    pass
                     # TODO add an adding function
 
             for player in player_sheet:
