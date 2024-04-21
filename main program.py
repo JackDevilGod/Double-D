@@ -15,11 +15,13 @@ def main():
             match action:
                 case "battle":
                     battle()
-                case "add":
+                case "add player":
                     # TODO add an adding function
 
             for player in player_sheet:
                 print(" ".join(player))
+
+            action: str = input(action_list).lower()
 
 
 def add_player():
