@@ -1,3 +1,5 @@
+import os.path
+
 from classes import *
 import csv
 
@@ -6,6 +8,7 @@ def main():
     timeline: Timeline = Timeline()
 
     # fill the list with players
+    current_directory = os.path.dirname(__file__)
     with open("../player data.csv", "r") as player_data_file:
         list_player_data = csv.reader(player_data_file)
         for player_data in list_player_data:
