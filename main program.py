@@ -1,3 +1,5 @@
+import csv
+
 from battle_instance import *
 
 
@@ -16,8 +18,7 @@ def main():
                 case "battle":
                     battle()
                 case "add player":
-                    pass
-                    # TODO add an adding function
+                    add_player()
 
             for player in player_sheet:
                 print(" ".join(player))
@@ -26,7 +27,20 @@ def main():
 
 
 def add_player():
-    pass
+    with open("player data.csv", "w", newline="") as player_data_file:
+        player_csv = csv.writer(player_data_file, delimiter=" ", quotechar="|", quoting=csv.QUOTE_MINIMAL)
+
+        player_name: str = input("player name or exit")
+
+        while player_name != "exit":
+            speed: str = input("input speed")
+
+            while speed.isnumeric() is False:
+                speed: str = input("input speed")
+
+            player_csv.writerow([player_name, speed])
+
+            player_name = input("player name or exit")
 
 
 if __name__ == "__main__":
