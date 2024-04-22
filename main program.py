@@ -2,7 +2,7 @@ from battle_instance import *
 
 
 def main():
-    with open("player data.csv", "r") as player_sheet_file:
+    with open("player data.txt", "r") as player_sheet_file:
         player_sheet = player_sheet_file.readlines()
 
         for player in player_sheet:
@@ -18,7 +18,7 @@ def main():
             case "add player":
                 add_player()
 
-        with open("player data.csv", "r") as player_sheet_file:
+        with open("player data.txt", "r") as player_sheet_file:
             player_sheet = player_sheet_file.readlines()
 
             for player in player_sheet:
@@ -28,9 +28,7 @@ def main():
 
 
 def add_player():
-    with open("player data.csv", "w", newline="") as player_data_file:
-        player_csv = csv.writer(player_data_file, delimiter=" ", quotechar="|", quoting=csv.QUOTE_MINIMAL)
-
+    with open("player data.txt", "w", newline="") as player_data_file:
         player_name: str = input("player name or exit\n")
 
         while player_name != "exit":
@@ -39,7 +37,7 @@ def add_player():
             while speed.isnumeric() is False:
                 speed: str = input("input speed\n")
 
-            player_csv.writerow([player_name, speed])
+            player_data_file.writelines(player_name + "," + speed + "\n")
 
             player_name = input("player name or exit\n")
 

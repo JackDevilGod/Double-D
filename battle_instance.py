@@ -7,10 +7,12 @@ def battle():
 
     # fill the list with players
     with open("player data.csv", "r") as player_data_file:
-        list_player_data = csv.reader(player_data_file)
+        list_player_data = player_data_file.readlines()
 
         for player_data in list_player_data:
-            timeline.add(Character(player_data[0], float(player_data[1])))
+            player_data_spliced = player_data.split(",")
+
+            timeline.add(Character(player_data_spliced[0], float(player_data_spliced[1])))
 
     # fill the list with enemies
     character_name: str = input("name of enemy\n")
