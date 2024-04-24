@@ -1,10 +1,18 @@
+"""
+player:
+
+monster:
+<name>,<hit points>,<defence>,<speed>,<strength>,<dexterity>,<constitution>,<intelligence>,<wisdom>,<charisma>,<skills>
+"""
+
+
 def main():
     # add players and enemies to data files.
     section: str | None = None
     action: str | None = None
 
     text_selected: str = "selected:"
-    action_list: str = "add, remove, edit, return"
+    action_list: str = "add, remove, edit, return" + "\n"
 
     while True:
         match section:
@@ -14,7 +22,7 @@ def main():
                     section = input("heroes or monsters\n").lower()
 
             case "heroes" | "1":
-                with open("players data.txt", "r") as player_sheet:
+                with open("heroes data.txt", "r") as player_sheet:
                     player_sheet = player_sheet.readlines()
                     print("-".join([_.split(",")[0] for _ in player_sheet]))
 
@@ -29,7 +37,7 @@ def main():
 
         match action:
             case "add" | "1":
-                pass
+                add_entity(section)
 
             case "remove" | "2":
                 pass
@@ -41,19 +49,15 @@ def main():
                 section = None
 
 
-def add_entity():
-    with open("players data.txt", "w", newline="") as player_data_file:
-        player_name: str = input("player name or exit\n")
+def add_entity(entity_type: str):
+    with open(entity_type + " data.txt", "r") as sheet:
+        data: list[str] = sheet.readlines()
 
-        while player_name != "exit":
-            speed: str = input("input speed\n")
+    with open(entity_type + " data.txt", "w") as sheet:
+        entity_name: str = input("name\n")
 
-            while speed.isnumeric() is False:
-                speed: str = input("input speed\n")
-
-            player_data_file.writelines(player_name + "," + speed + "\n")
-
-            player_name = input("player name or exit\n")
+        for stat in []:
+            pass
 
 
 if __name__ == "__main__":
