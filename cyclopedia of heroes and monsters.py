@@ -4,7 +4,7 @@ def main():
     action: str | None = None
 
     text_selected: str = "selected:"
-    action_list: str = "add, remove, edit"
+    action_list: str = "add, remove, edit, return"
 
     while True:
         match section:
@@ -27,8 +27,21 @@ def main():
 
                 action = input(action_list)
 
+        match action:
+            case "add" | "1":
+                pass
 
-def add_player():
+            case "remove" | "2":
+                pass
+
+            case "edit" | "3":
+                pass
+
+            case "return" | "4":
+                section = None
+
+
+def add_entity():
     with open("players data.txt", "w", newline="") as player_data_file:
         player_name: str = input("player name or exit\n")
 
