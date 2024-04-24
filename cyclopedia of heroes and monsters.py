@@ -1,9 +1,15 @@
 """
 player:
-
+<name>,<race>,<class>,<hit points>,<defence>,<speed>,<strength>,<dexterity>,<constitution>,<intelligence>,<wisdom>,<charisma>,<skills>,<description>
 monster:
-<name>,<hit points>,<defence>,<speed>,<strength>,<dexterity>,<constitution>,<intelligence>,<wisdom>,<charisma>,<skills>
+<name>,<hit points>,<defence>,<speed>,<strength>,<dexterity>,<constitution>,<intelligence>,<wisdom>,<charisma>,<skills>,<description>
 """
+Player_data_list: list[str] = ["<name>", "<race>", "<class","<hit points>", "<defence>", "<speed>", "<strength>", "<dexterity>",
+                               "<constitution>", "<intelligence>", "<wisdom>", "<charisma>", "<skills>",
+                               "<description>"]
+Monster_data_list: list[str] = ["<name>", "<hit points>", "<defence>", "<speed>", "<strength>", "<dexterity>",
+                                "<constitution>", "<intelligence>", "<wisdom>", "<charisma>", "<skills>",
+                                "<description>"]
 
 
 def main():
