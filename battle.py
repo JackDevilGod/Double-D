@@ -1,7 +1,7 @@
 from classes import *
 
 
-def battle():
+def main():
     timeline: Timeline = Timeline()
 
     # fill the list with players
@@ -40,3 +40,7 @@ def battle():
             action = input(actions).lower()
 
         timeline.next_round()
+
+
+if __name__ == "__main__":
+    main()
