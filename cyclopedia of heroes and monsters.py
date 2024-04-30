@@ -4,7 +4,7 @@ player:
 monster:
 <name>,<hit points>,<defence>,<speed>,<strength>,<dexterity>,<constitution>,<intelligence>,<wisdom>,<charisma>,<skills>,<description>
 """
-Player_data_list: list[str] = ["<name>", "<race>", "<class", "<hit points>", "<defence>", "<speed>", "<strength>", "<dexterity>",
+Player_data_list: list[str] = ["<name>", "<race>", "<class>", "<hit points>", "<defence>", "<speed>", "<strength>", "<dexterity>",
                                "<constitution>", "<intelligence>", "<wisdom>", "<charisma>", "<description>", "<skills>"]
 Monster_data_list: list[str] = ["<name>", "<hit points>", "<defence>", "<speed>", "<strength>", "<dexterity>",
                                 "<constitution>", "<intelligence>", "<wisdom>", "<charisma>", "<description>",
@@ -17,7 +17,7 @@ def main():
     action: str | None = None
 
     text_selected: str = "selected:"
-    action_list: str = "add, remove, edit, return" + "\n"
+    action_list: str = "add, remove, edit, view, return" + "\n"
 
     while True:
         match section:
@@ -50,7 +50,10 @@ def main():
             case "edit" | "3":
                 pass
 
-            case "return" | "4":
+            case "view" | "4":
+                pass
+
+            case "return" | "5":
                 section = None
 
 
