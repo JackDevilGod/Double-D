@@ -1,1 +1,0 @@
-steve,minecraft,crafter,3,5,6,3,2,1,8,9,01,a crafter of block,craft:make things
