@@ -5,7 +5,8 @@ monster:
 <name>,<hit points>,<defence>,<speed>,<strength>,<dexterity>,<constitution>,<intelligence>,<wisdom>,<charisma>,<skills>,<description>
 """
 data_type_list: list[str] = ["<name>", "<race>", "<class>", "<hit points>", "<defence>", "<speed>", "<strength>",
-                             "<dexterity>", "<constitution>", "<intelligence>", "<wisdom>", "<charisma>", "<description>", "<skills>"]
+                             "<dexterity>", "<constitution>", "<intelligence>", "<wisdom>", "<charisma>",
+                             "<description>", "<skills>"]
 
 
 def main():
