@@ -42,7 +42,7 @@ def main():
                 add_entity(section)
 
             case "remove" | "2":
-                pass
+                remove_entity(section)
 
             case "edit" | "3":
                 pass
@@ -83,6 +83,10 @@ def add_entity(entity_type: str):
 
         for line in data:
             sheet.write(line)
+
+
+def remove_entity(entity_type: str):
+    pass
 
 
 if __name__ == "__main__":
